@@ -47,7 +47,7 @@ This robot is designed for navigating and interacting with cluttered environment
 1. Clone the repo.
 2. Create a new ROS ws folder and copy the src folder to the workspace.
 3. Build the workspace.
-4. Read the report linked below to understand various aspects as well as the use guidelines.
+4. Read the report linked below to understand various aspects as well as the user guidelines.
 
 [Cerbrus Report](https://drive.google.com/file/d/1TsgOvOFa-3lRndhc1y9BJy2-B0beeDkm/view?usp=sharing)
 
