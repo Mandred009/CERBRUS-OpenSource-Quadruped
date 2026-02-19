@@ -49,6 +49,8 @@ This robot is designed for navigating and interacting with cluttered environment
 3. Build the workspace.
 4. Read the report linked below to understand various aspects as well as the user guidelines.
 
+[Demo Video](https://youtu.be/7aDOSGi9X7s?si=jsZ_k7eUMPky-3Gf)
+
 [Cerbrus Report](https://drive.google.com/file/d/167SGrlnD2wC8xEmvnSjF_YPM4pek4O9T/view?usp=sharing)
 
 [CAD Files](https://drive.google.com/drive/folders/1i38UzL1JV2BpZAZQdjU2TJO_qoiLwZAB?usp=sharing)
