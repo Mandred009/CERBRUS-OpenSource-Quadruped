@@ -1,4 +1,14 @@
-![CERBRUS in Action](cerbrus_walk.gif) ![CERBRUS in Sim](cerbrus_mujoco.gif)
+<table style="width:100%">
+  <tr>
+    <th width="50%">Physical Hardware</th>
+    <th width="50%">MuJoCo Simulation</th>
+  </tr>
+  <tr>
+    <td><img src="cerbrus_walk.gif" style="width:100%;"></td>
+    <td><img src="cerbrus_mujoco.gif" style="width:100%;"></td>
+  </tr>
+</table>
+
 # CERBRUS: Open-Source Ant-Inspired Quadruped
 **A 14-DoF Bio-Inspired Robot with Front-Mounted Manipulation and ROS 2 Integration. Inspired by nature, engineered for autonomy.**
 
