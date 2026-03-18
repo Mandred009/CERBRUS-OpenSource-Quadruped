@@ -1,4 +1,4 @@
-![CERBRUS in Action](Cerbrus_walk.gif)
+![CERBRUS in Action](cerbrus_walk.gif) ![CERBRUS in Sim](cerbrus_mujoco.gif)
 # CERBRUS: Open-Source Ant-Inspired Quadruped
 **A 14-DoF Bio-Inspired Robot with Front-Mounted Manipulation and ROS 2 Integration. Inspired by nature, engineered for autonomy.**
 
@@ -46,6 +46,8 @@ Most quadruped robots treat manipulation as a secondary attachment, often result
 
 ### Quick Start
 ```bash
+# Please read the report pasted at the bottom of this page for more details on technical implementation and software design.
+
 # Clone the repository and submodules
 git clone --recursive [https://github.com/Mandred009/CERBRUS-OpenSource-Quadruped.git](https://github.com/Mandred009/CERBRUS-OpenSource-Quadruped.git)
 cd CERBRUS-OpenSource-Quadruped
@@ -58,7 +60,10 @@ colcon build --symlink-install
 source install/setup.bash
 
 # Launch the core controller and telemetry
-ros2 launch cerbrus_bringup robot.launch.py
+ros2 launch cerbrus_bringup cerbrus.launch.py
+
+# To Launch the Mujoco sim
+ros2 launch cerbrus_sim robot.launch.py
 ```
 ### Research & Development Roadmap
 CERBRUS serves as an open-source testbed for several advanced robotics research trajectories:
@@ -83,3 +88,9 @@ We welcome contributions from the robotics community! Whether it’s gait optimi
 4) Push to the branch (git push origin feature/AmazingFeature).
 
 5) Open a Pull Request.
+
+[Demo Video](https://youtu.be/7aDOSGi9X7s?si=jsZ_k7eUMPky-3Gf)
+
+[Cerbrus Report](https://drive.google.com/file/d/167SGrlnD2wC8xEmvnSjF_YPM4pek4O9T/view?usp=sharing)
+
+[CAD Files](https://drive.google.com/drive/folders/1i38UzL1JV2BpZAZQdjU2TJO_qoiLwZAB?usp=sharing)
