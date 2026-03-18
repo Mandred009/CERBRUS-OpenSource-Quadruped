@@ -1,3 +1,4 @@
+![CERBRUS in Action](Cerbrus_walk.gif)
 # CERBRUS: Open-Source Ant-Inspired Quadruped
 **A 14-DoF Bio-Inspired Robot with Front-Mounted Manipulation and ROS 2 Integration. Inspired by nature, engineered for autonomy.**
 
