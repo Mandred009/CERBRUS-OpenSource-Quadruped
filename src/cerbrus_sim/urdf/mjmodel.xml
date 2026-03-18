@@ -1,0 +1,157 @@
+<mujoco model="cerbrus_urdf">
+  <compiler angle="radian" meshdir="meshes/"/>
+
+  <option timestep="0.001" iterations="100" solver="Newton" gravity="0 0 -9.81">
+    <flag warmstart="enable"/>
+  </option>
+
+  <default>
+    <joint damping="2" armature="0.01" frictionloss="0.2"/>
+    <geom friction="0.6 0.5 0.5" condim="3" contype="1" conaffinity="1"/>
+    <position kp="100" forcerange="-33.5 33.5"/>
+  </default>
+
+  <asset>
+    <mesh name="base_link" file="base_link.STL"/>
+    <mesh name="front_left_b_link" file="front_left_b_link.STL"/>
+    <mesh name="front_left_ul_link" file="front_left_ul_link.STL"/>
+    <mesh name="front_left_ll_link" file="front_left_ll_link.STL"/>
+    <mesh name="front_right_b_link" file="front_right_b_link.STL"/>
+    <mesh name="front_right_ul_link" file="front_right_ul_link.STL"/>
+    <mesh name="front_right_ll_link" file="front_right_ll_link.STL"/>
+    <mesh name="back_left_b_link" file="back_left_b_link.STL"/>
+    <mesh name="back_left_ul_link" file="back_left_ul_link.STL"/>
+    <mesh name="back_left_ll_link" file="back_left_ll_link.STL"/>
+    <mesh name="back_right_b_link" file="back_right_b_link.STL"/>
+    <mesh name="back_right_ul_link" file="back_right_ul_link.STL"/>
+    <mesh name="back_right_ll_link" file="back_right_ll_link.STL"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" type="plane" size="10 10 0.1" rgba="0.3 0.3 0.3 1"/>
+    <light name="light" pos="0 0 3" dir="0 0 -1"/>
+
+    <body name="base_link" pos="0 0 0.4">
+      <freejoint name="root"/>
+      <inertial pos="0 0 0" mass="3.0" diaginertia="0.02 0.05 0.05"/>
+      <geom type="mesh" mesh="base_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+      <geom name="base_collision" type="box" size="0.15 0.1 0.05" rgba="1 0 0 0"/>
+
+      <!-- Front Left Leg -->
+      <body name="front_left_b_link" pos="0.23983 0.15958 -0.063453">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001"/>
+        <joint name="front_left_b_joint" pos="0 -0.02 0.055" axis="1 0 0" range="-1.57 1.57"/>
+        <geom type="mesh" mesh="front_left_b_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+        
+        <body name="front_left_ul_link" pos="0 -0.005 0">
+          <inertial pos="0 0 -0.065" mass="0.15" diaginertia="0.0003 0.0003 0.0001"/>
+          <joint name="front_left_ul_joint" axis="0 1 0" range="-1.57 1.57"/>
+          <geom type="mesh" mesh="front_left_ul_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+          <geom name="fl_thigh_col" type="capsule" fromto="0 -0.02 0 0 -0.02 -0.13" size="0.015" rgba="0 1 0 0"/>
+          
+          <body name="front_left_ll_link" pos="0 0.004658 -0.13">
+            <inertial pos="0 0 -0.09" mass="0.1" diaginertia="0.0002 0.0002 0.00005"/>
+            <joint name="front_left_ll_joint" axis="0 1 0" range="-2.7 -0.5"/>
+            <geom type="mesh" mesh="front_left_ll_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+            <geom name="fl_calf_col" type="capsule" fromto="0 -0.02 0 0 -0.02 -0.15" size="0.01" rgba="0 1 0 0"/>
+            <geom name="fl_foot" type="sphere" pos="0 -0.02 -0.17" size="0.02" rgba="0 0 1 0.5" friction="1 0.5 0.5"/>
+          </body>
+        </body>
+      </body>
+
+      <!-- Front Right Leg -->
+      <body name="front_right_b_link" pos="0.23983 -0.16011 -0.05327">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001"/>
+        <joint name="front_right_b_joint" pos="0 0.02 0.055" axis="1 0 0" range="-1.57 1.57"/>
+        <geom type="mesh" mesh="front_right_b_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+        
+        <body name="front_right_ul_link" pos="0 0.005 0">
+          <inertial pos="0 0 -0.065" mass="0.15" diaginertia="0.0003 0.0003 0.0001"/>
+          <joint name="front_right_ul_joint" axis="0 1 0" range="-1.57 1.57"/>
+          <geom type="mesh" mesh="front_right_ul_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+          <geom name="fr_thigh_col" type="capsule" fromto="0 0.02 0 0 0.02 -0.13" size="0.015" rgba="0 1 0 0"/>
+          
+          <body name="front_right_ll_link" pos="0 -0.002742 -0.13">
+            <inertial pos="0 0 -0.09" mass="0.1" diaginertia="0.0002 0.0002 0.00005"/>
+            <joint name="front_right_ll_joint" axis="0 1 0" range="-2.7 -0.5"/>
+            <geom type="mesh" mesh="front_right_ll_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+            <geom name="fr_calf_col" type="capsule" fromto="0 0.02 0 0 0.02 -0.15" size="0.01" rgba="0 1 0 0"/>
+            <geom name="fr_foot" type="sphere" pos="0 0.02 -0.17" size="0.02" rgba="0 0 1 0.5" friction="1 0.5 0.5"/>
+          </body>
+        </body>
+      </body>
+
+      <!-- Back Left Leg -->
+      <body name="back_left_b_link" pos="-0.24033 0.156 -0.064768">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001"/>
+        <joint name="back_left_b_joint" pos="0 -0.02 0.055" axis="1 0 0" range="-1.57 1.57"/>
+        <geom type="mesh" mesh="back_left_b_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+        
+        <body name="back_left_ul_link" pos="0 -0.005 0">
+          <inertial pos="0 0 -0.065" mass="0.15" diaginertia="0.0003 0.0003 0.0001"/>
+          <joint name="back_left_ul_joint" axis="0 1 0" range="-1.57 1.57"/>
+          <geom type="mesh" mesh="back_left_ul_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+          <geom name="bl_thigh_col" type="capsule" fromto="0 -0.02 0 0 -0.02 -0.13" size="0.015" rgba="0 1 0 0"/>
+          
+          <body name="back_left_ll_link" pos="0 0.004658 -0.13">
+            <inertial pos="0 0 -0.09" mass="0.1" diaginertia="0.0002 0.0002 0.00005"/>
+            <joint name="back_left_ll_joint" axis="0 1 0" range="-2.7 -0.5"/>
+            <geom type="mesh" mesh="back_left_ll_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+            <geom name="bl_calf_col" type="capsule" fromto="0 -0.02 0 0 -0.02 -0.15" size="0.01" rgba="0 1 0 0"/>
+            <geom name="bl_foot" type="sphere" pos="0 -0.02 -0.17" size="0.02" rgba="0 0 1 0.5" friction="1 0.5 0.5"/>
+          </body>
+        </body>
+      </body>
+
+      <!-- Back Right Leg -->
+      <body name="back_right_b_link" pos="-0.24033 -0.16011 -0.05327">
+        <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001"/>
+        <joint name="back_right_b_joint" pos="0 0.02 0.055" axis="1 0 0" range="-1.57 1.57"/>
+        <geom type="mesh" mesh="back_right_b_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+        
+        <body name="back_right_ul_link" pos="0 0.005 0">
+          <inertial pos="0 0 -0.065" mass="0.15" diaginertia="0.0003 0.0003 0.0001"/>
+          <joint name="back_right_ul_joint" axis="0 1 0" range="-1.57 1.57"/>
+          <geom type="mesh" mesh="back_right_ul_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+          <geom name="br_thigh_col" type="capsule" fromto="0 0.02 0 0 0.02 -0.13" size="0.015" rgba="0 1 0 0"/>
+          
+          <body name="back_right_ll_link" pos="0 -0.002742 -0.13">
+            <inertial pos="0 0 -0.09" mass="0.1" diaginertia="0.0002 0.0002 0.00005"/>
+            <joint name="back_right_ll_joint" axis="0 1 0" range="-2.7 -0.5"/>
+            <geom type="mesh" mesh="back_right_ll_link" contype="0" conaffinity="0" rgba="0.79216 0.81961 0.93333 1"/>
+            <geom name="br_calf_col" type="capsule" fromto="0 0.02 0 0 0.02 -0.15" size="0.01" rgba="0 1 0 0"/>
+            <geom name="br_foot" type="sphere" pos="0 0.02 -0.17" size="0.02" rgba="0 0 1 0.5" friction="1 0.5 0.5"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position name="FR_hip" joint="front_left_b_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="FR_thigh" joint="front_left_ul_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="FR_calf" joint="front_left_ll_joint" kp="100" ctrlrange="-2.7 -0.5"/>
+    <position name="FL_hip" joint="front_right_b_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="FL_thigh" joint="front_right_ul_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="FL_calf" joint="front_right_ll_joint" kp="100" ctrlrange="-2.7 -0.5"/>
+    <position name="RR_hip" joint="back_left_b_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="RR_thigh" joint="back_left_ul_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="RR_calf" joint="back_left_ll_joint" kp="100" ctrlrange="-2.7 -0.5"/>
+    <position name="RL_hip" joint="back_right_b_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="RL_thigh" joint="back_right_ul_joint" kp="100" ctrlrange="-1.57 1.57"/>
+    <position name="RL_calf" joint="back_right_ll_joint" kp="100" ctrlrange="-2.7 -0.5"/>
+  </actuator>
+
+  <keyframe>
+  <key name="standing" qpos="0 0 0.28 1 0 0 0 
+                             0.0 0.8 -1.6 
+                             0.0 0.8 -1.6 
+                             0.0 0.8 -1.6 
+                             0.0 0.8 -1.6"
+                       ctrl="0.0 0.8 -1.6 
+                             0.0 0.8 -1.6 
+                             0.0 0.8 -1.6 
+                             0.0 0.8 -1.6"/>
+</keyframe>
+
+</mujoco>

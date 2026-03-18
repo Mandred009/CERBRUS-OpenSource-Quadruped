@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="cerbrus">
+
+  <xacro:macro name="links" params="name mass ix iy iz mesh_file">
+
+    <link name="${name}">
+      <inertial>
+        <origin xyz="0.023501 -0.00012609 -0.029" rpy="0.0 0.0 0.0"/>
+        <mass value="${mass}"/>
+        <inertia ixx="${ix}" ixy="0.0" ixz="0.0" iyy="${iy}" iyz="0.0" izz="${iz}"/>
+      </inertial>
+      <visual name="">
+        <origin xyz="0.0 0.02 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://cerbrus_description/meshes/${mesh_file}" scale="1.0 1.0 1.0"/>
+        </geometry>
+        <material name="">
+          <color rgba="0.8 0.9 0.7 1.0"/>
+          <texture filename=""/>
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.02 0.0" rpy="0.0 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://cerbrus_description/meshes/${mesh_file}" scale="1.0 1.0 1.0"/>
+        </geometry>
+      </collision>
+    </link>
+    
+  </xacro:macro>
+
+  <xacro:links name="base_link" mass="1.22" ix="0.0021324" iy="0.0090463" iz="0.01083" mesh_file="base_link.STL"/>
+  <xacro:links name="front_left_b_link" mass="0.026" ix="9.0149E-06" iy="9.0149E-06" iz="1.0208E-05" mesh_file="front_left_b_link.STL"/>
+
+
+  <joint name="front_left_b_joint" type="revolute">
+    <origin xyz="0.48015 0.27243 -0.010182" rpy="0.0 0.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="front_left_b_link"/>
+    <axis xyz="1.0 0.0 0.0"/>
+    <limit lower="-1.57" upper="1.57" effort="100.0" velocity="4.5"/>
+  </joint>
+  
+</robot>
